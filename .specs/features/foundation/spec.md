@@ -155,8 +155,8 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-08 | P1: Health and safe errors — AC3 generic 500 body | Tasks | Pending |
 | FND-09 | P1: Health and safe errors — AC4 traceback logged | Tasks | Pending |
 | FND-10 | P1: Health and safe errors — AC5 404 envelope | Tasks | Pending |
-| FND-11 | P1: Configuration — AC1 missing DATABASE_URL | Tasks | Pending |
-| FND-12 | P1: Configuration — AC2 .env.example complete | Tasks | Pending |
+| FND-11 | P1: Configuration — AC1 missing DATABASE_URL | Tasks | Implementing |
+| FND-12 | P1: Configuration — AC2 .env.example complete | Tasks | Implementing |
 | FND-13 | P1: Configuration — AC3 no secrets exposed to browser | Tasks | Pending |
 | FND-14 | P1: Web shell — AC1 home heading | Tasks | Pending |
 | FND-15 | P1: Web shell — AC2 not found page | Tasks | Pending |

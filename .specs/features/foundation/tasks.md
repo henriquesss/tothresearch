@@ -128,9 +128,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_config.py`: starting the app in a subprocess with `DATABASE_URL` unset exits non-zero and stderr contains `DATABASE_URL`
-- [ ] `test_config.py`: the set of `Settings` fields equals the set of variables in `.env.example`, and each has a comment line
-- [ ] Gate passes; test count: 3
+- [x] `test_config.py`: starting the app in a subprocess with `DATABASE_URL` unset exits non-zero and stderr contains `DATABASE_URL`
+- [x] `test_config.py`: the set of `Settings` fields equals the set of variables in `.env.example`, and each has a comment line
+- [x] Gate passes; test count: 3
 
 **Tests**: unit
 **Gate**: quick
