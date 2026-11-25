@@ -310,10 +310,10 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] Prints `ok - api health 200 within 90s` (fresh volume, `cp .env.example .env` equivalent)
-- [ ] Prints `ok - migrations at head after start` (`alembic current` in the api container shows `0001_baseline`)
-- [ ] Prints `ok - web proxies /api/health` (`curl localhost:5173/api/health` returns the API body)
-- [ ] Exits 0
+- [x] Prints `ok - api health 200 within 90s` (fresh volume, `cp .env.example .env` equivalent)
+- [x] Prints `ok - migrations at head after start` (`alembic current` in the api container shows `0001_baseline`)
+- [x] Prints `ok - web proxies /api/health` (`curl localhost:5173/api/health` returns the API body)
+- [x] Exits 0
 
 **Tests**: smoke
 **Gate**: full

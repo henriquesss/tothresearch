@@ -145,7 +145,7 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| FND-01 | P1: Run the whole stack locally — AC1 compose up + health | Tasks | Pending |
+| FND-01 | P1: Run the whole stack locally — AC1 compose up + health | Tasks | Implementing |
 | FND-02 | P1: Run the whole stack locally — AC2 migrations on start | Tasks | Implementing |
 | FND-03 | P1: Run the whole stack locally — AC3 upgrade/downgrade | Tasks | Implementing |
 | FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Implementing |
