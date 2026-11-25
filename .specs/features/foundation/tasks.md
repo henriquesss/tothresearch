@@ -247,9 +247,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `env.test.ts`: the Vite config's `envPrefix` is `VITE_`, and no `VITE_` variable in the root `.env.example` contains `KEY`, `SECRET` or `TOKEN`
-- [ ] `env.test.ts`: the Vite config proxies `/api` to the configured target
-- [ ] Gate passes; test count: 2
+- [x] `env.test.ts`: the Vite config's `envPrefix` is `VITE_`, and no `VITE_` variable in the root `.env.example` contains `KEY`, `SECRET` or `TOKEN`
+- [x] `env.test.ts`: the Vite config proxies `/api` to the configured target
+- [x] Gate passes; test count: 2
 
 **Tests**: unit
 **Gate**: quick

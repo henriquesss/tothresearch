@@ -148,7 +148,7 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-01 | P1: Run the whole stack locally — AC1 compose up + health | Tasks | Pending |
 | FND-02 | P1: Run the whole stack locally — AC2 migrations on start | Tasks | Pending |
 | FND-03 | P1: Run the whole stack locally — AC3 upgrade/downgrade | Tasks | Implementing |
-| FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Pending |
+| FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Implementing |
 | FND-05 | P1: Run the whole stack locally — AC5 repo layout | Tasks | Implementing |
 | FND-06 | P1: Health and safe errors — AC1 healthy | Tasks | Implementing |
 | FND-07 | P1: Health and safe errors — AC2 DB unavailable 503 | Tasks | Implementing |
@@ -157,7 +157,7 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-10 | P1: Health and safe errors — AC5 404 envelope | Tasks | Implementing |
 | FND-11 | P1: Configuration — AC1 missing DATABASE_URL | Tasks | Implementing |
 | FND-12 | P1: Configuration — AC2 .env.example complete | Tasks | Implementing |
-| FND-13 | P1: Configuration — AC3 no secrets exposed to browser | Tasks | Pending |
+| FND-13 | P1: Configuration — AC3 no secrets exposed to browser | Tasks | Implementing |
 | FND-14 | P1: Web shell — AC1 home heading | Tasks | Pending |
 | FND-15 | P1: Web shell — AC2 not found page | Tasks | Pending |
 | FND-16 | P1: Web shell — AC3 link back home | Tasks | Pending |
