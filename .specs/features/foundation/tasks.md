@@ -429,7 +429,7 @@ Proof: run api | test_db_guard.py::test_fixture_engine_uses_test_database PASSED
 Proof: run api | test_compose.py::test_api_waits_for_healthy_db PASSED
 
 **C23** - Equal `TEST_DATABASE_URL` and `DATABASE_URL` abort the suite with a message naming both (FND-23, edge)
-Proof: run api | test_db_guard.py::test_guard_rejects_equal_urls PASSED
+Proof: run api | test_db_guard.py::test_suite_aborts_before_any_test_when_urls_are_equal PASSED
 
 ---
 

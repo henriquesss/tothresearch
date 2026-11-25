@@ -1,9 +1,14 @@
 import os
+import subprocess
+import sys
+from pathlib import Path
 
 import pytest
 from conftest import check_test_database_url
 from sqlalchemy import make_url, text
 from sqlalchemy.ext.asyncio import AsyncEngine
+
+API_DIR = Path(__file__).resolve().parents[1]
 
 
 def test_guard_rejects_equal_urls() -> None:
@@ -59,3 +64,24 @@ async def test_fixture_engine_uses_test_database(test_engine: AsyncEngine) -> No
 
     assert current == test_db_name
     assert current != app_db_name
+
+
+def test_suite_aborts_before_any_test_when_urls_are_equal() -> None:
+    url = "postgresql+asyncpg://toth:toth@localhost:5432/toth"
+    env = {**os.environ, "DATABASE_URL": url, "TEST_DATABASE_URL": url}
+
+    result = subprocess.run(
+        [sys.executable, "-m", "pytest", "-v", "-p", "no:cacheprovider", "tests/test_app.py"],
+        cwd=API_DIR,
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=60,
+    )
+    output = result.stdout + result.stderr
+
+    assert result.returncode == 4
+    assert "test_create_app_returns_fastapi_app" not in output
+    assert "passed" not in output
+    assert "TEST_DATABASE_URL" in output
+    assert "DATABASE_URL" in output.replace("TEST_DATABASE_URL", "")
