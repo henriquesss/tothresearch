@@ -209,8 +209,8 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_migrations.py`: `alembic upgrade head` then `alembic downgrade base` against `TEST_DATABASE_URL` both exit 0, and `alembic current` reports `0001_baseline` between them
-- [ ] Gate passes; test count: 11; Build gate on the API half (`mypy`, `ruff`) green
+- [x] `test_migrations.py`: `alembic upgrade head` then `alembic downgrade base` against `TEST_DATABASE_URL` both exit 0, and `alembic current` reports `0001_baseline` between them
+- [x] Gate passes; test count: 11; Build gate on the API half (`mypy`, `ruff`) green
 
 **Tests**: integration
 **Gate**: full
