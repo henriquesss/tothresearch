@@ -228,8 +228,8 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `index.test.ts`: `AGENT_TYPES` equals exactly `fundamental_analyst, market_analyst, news_sentiment_analyst, geopolitical_analyst, risk_analyst, compliance_analyst, portfolio_manager` in that order
-- [ ] Gate passes; test count: 1
+- [x] `index.test.ts`: `AGENT_TYPES` equals exactly `fundamental_analyst, market_analyst, news_sentiment_analyst, geopolitical_analyst, risk_analyst, compliance_analyst, portfolio_manager` in that order
+- [x] Gate passes; test count: 1
 
 **Tests**: unit
 **Gate**: quick
@@ -436,7 +436,7 @@ Proof: run api | test_db_guard.py::test_guard_rejects_equal_urls PASSED
 ## Handoff
 
 **Settled mid-build:** 2026-11-25 - repository creation removed from T1; this plan does not create the repository (user: "in the phase 1, remove the github repo creation"); 2026-11-25 - the user creates the repository and each task is committed locally, never pushed (user: "1")
-**Dispatched:** batch 1 (Phase 1, T1–T7) worker - at HEAD: none (unborn branch `feature/foundation`) - 2026-11-25
+**Dispatched:** batch 1 (Phase 1, T1–T7) worker - at HEAD: none (unborn branch `feature/foundation`) - 2026-11-25 - returned (T1–T7 committed, 6b387c5..7be4630, api 11 passed); batch 2 (Phases 2+3, T8–T14) worker - at HEAD 7be4630 - 2026-11-25
 **Walked:** none
 
 ---

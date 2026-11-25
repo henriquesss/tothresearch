@@ -162,7 +162,7 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-15 | P1: Web shell — AC2 not found page | Tasks | Pending |
 | FND-16 | P1: Web shell — AC3 link back home | Tasks | Pending |
 | FND-17 | P1: Web shell — AC4 frontend stack | Tasks | Pending |
-| FND-18 | P1: Web shell — AC5 AGENT_TYPES | Tasks | Pending |
+| FND-18 | P1: Web shell — AC5 AGENT_TYPES | Tasks | Implementing |
 | FND-19 | P1: One test command — AC1 runs all suites | Tasks | Implementing |
 | FND-20 | P1: One test command — AC2 non-zero on failure | Tasks | Pending |
 | FND-21 | P1: One test command — AC3 separate test DB | Tasks | Implementing |
