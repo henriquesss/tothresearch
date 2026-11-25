@@ -411,7 +411,7 @@ Proof: run web | ✓ src/App.test.tsx > renders Page not found on an unknown pat
 Proof: run web | ✓ src/App.test.tsx > not-found link navigates home
 
 **C17** - The web app uses the PRD stack and renders a shadcn `Button` on `/` (FND-17, AC 4)
-Proof: run web | ✓ src/App.test.tsx > renders a shadcn button on /
+Proof: run web | ✓ src/stack.test.ts > uses the PRD stack and renders a shadcn Button on /
 
 **C18** - `AGENT_TYPES` is exactly the seven ids in workflow order (FND-18, AC 5)
 Proof: run shared | ✓ src/index.test.ts > AGENT_TYPES lists the seven agents in workflow order
