@@ -134,6 +134,22 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 
 ---
 
+### P1: Error envelope for every API error ⭐ MVP
+
+**User Story**: As the developer, I want every error under `/api` to use the same `{"error","message"}` envelope and never echo submitted values, so that later endpoints that take passwords or tokens cannot leak them in an error.
+
+**Why P1**: Added 2026-11-25 after verification found 405, 422 and `HTTPException` responses outside the envelope, with 422 echoing raw input (user: "Add it now (Recommended)"). PRD §9: sensitive errors must not expose internal details.
+
+**Acceptance Criteria**:
+
+1. IF a client calls a path under `/api` with a method its route does not allow THEN the API SHALL return `405` with body `{"error":"method_not_allowed","message":"Method not allowed."}`.
+2. IF request validation fails on a path under `/api` THEN the API SHALL return `422` with body `{"error":"validation_error","message":"Request validation failed.","fields":[{"field":"<dotted location>","issue":"<validation message>"}, ...]}` and the body SHALL contain none of the submitted values.
+3. IF a handler under `/api` raises `HTTPException(status, detail)` with a string detail THEN the API SHALL return that status with body `{"error":"<status phrase in snake_case>","message":"<detail>"}` (e.g. 409 → `"conflict"`); for a non-string detail the message SHALL be the status phrase.
+
+**Independent Test**: Run the API error tests: `POST /api/health`, a test-only route with an `int` query param called with `?n=secretvalue`, and a test-only route raising `HTTPException(409, "Already exists")`.
+
+---
+
 ## Edge Cases
 
 - IF the database is still starting when the API container starts THEN the `api` service SHALL wait for the `db` health check to pass before running migrations (compose `depends_on: condition: service_healthy`).
@@ -168,8 +184,11 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-21 | P1: One test command — AC3 separate test DB | Tasks | Implementing |
 | FND-22 | Edge: api waits for db health | Tasks | Implementing |
 | FND-23 | Edge: test DB guard | Tasks | Implementing |
+| FND-24 | P1: Error envelope — AC1 405 | Tasks | Implementing |
+| FND-25 | P1: Error envelope — AC2 422 without input values | Tasks | Implementing |
+| FND-26 | P1: Error envelope — AC3 HTTPException | Tasks | Implementing |
 
-**Coverage:** 23 total, 0 mapped to tasks, 23 unmapped ⚠️ (mapped in `tasks.md` after approval)
+**Coverage:** 26 total, 26 mapped to tasks (T1–T15), 0 unmapped
 
 ---
 

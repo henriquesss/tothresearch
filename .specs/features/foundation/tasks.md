@@ -73,7 +73,7 @@ T8 → T9 → T10
 ### Phase 3: Stack and tooling
 
 ```
-T11 → T12 → T13 → T14
+T11 → T12 → T13 → T14 → T15
 ```
 
 ---
@@ -360,6 +360,27 @@ T11 → T12 → T13 → T14
 
 ---
 
+### T15: Put 405, 422 and HTTPException responses in the error envelope
+
+**What**: Handlers in `errors.py` for `StarletteHTTPException` (405 and any explicit `HTTPException` under `/api`, keeping the existing 404 envelope) and `RequestValidationError` (422 with `fields` of `{field, issue}`, no `input`/`ctx` values), scoped to `/api` and `/api/...`.
+**Where**: `api/app/core/errors.py`
+**Depends on**: T14
+**Reuses**: envelope helpers from T4
+**Requirement**: FND-24, FND-25, FND-26
+
+**Done when**:
+
+- [x] `test_errors.py::test_method_not_allowed_returns_405_envelope`: `POST /api/health` → 405 with the exact body
+- [x] `test_errors.py::test_validation_error_returns_422_without_input`: test-only route with `n: int`, `?n=secretvalue` → 422, `error`/`message` exact, `fields == [{"field":"query.n","issue":<pydantic msg>}]`, and `secretvalue` absent from the raw body
+- [x] `test_errors.py::test_http_exception_returns_envelope_with_detail`: `HTTPException(409, "Already exists")` → 409 `{"error":"conflict","message":"Already exists"}`; a dict detail → message `"Conflict"`
+- [x] Existing 500/404/`/apix` tests still green; Build, `pnpm test`, smoke and testcmd green
+
+**Tests**: unit
+**Gate**: build
+**Commit**: `feat(api): put 405, 422 and http exceptions in the error envelope`
+
+---
+
 ## Checks
 
 **C1** - `docker compose up` from a fresh volume serves `GET :8000/api/health` 200 within 90 s (FND-01, AC 1)
@@ -431,12 +452,21 @@ Proof: run api | test_compose.py::test_api_waits_for_healthy_db PASSED
 **C23** - Equal `TEST_DATABASE_URL` and `DATABASE_URL` abort the suite with a message naming both (FND-23, edge)
 Proof: run api | test_db_guard.py::test_suite_aborts_before_any_test_when_urls_are_equal PASSED
 
+**C24** - A disallowed method under `/api` returns 405 `{"error":"method_not_allowed","message":"Method not allowed."}` (FND-24, AC 1)
+Proof: run api | test_errors.py::test_method_not_allowed_returns_405_envelope PASSED
+
+**C25** - A validation failure returns 422 with the envelope and field list, and never the submitted value (FND-25, AC 2)
+Proof: run api | test_errors.py::test_validation_error_returns_422_without_input PASSED
+
+**C26** - `HTTPException(409, "Already exists")` returns 409 `{"error":"conflict","message":"Already exists"}` (FND-26, AC 3)
+Proof: run api | test_errors.py::test_http_exception_returns_envelope_with_detail PASSED
+
 ---
 
 ## Handoff
 
-**Settled mid-build:** 2026-11-25 - repository creation removed from T1; this plan does not create the repository (user: "in the phase 1, remove the github repo creation"); 2026-11-25 - the user creates the repository and each task is committed locally, never pushed (user: "1")
-**Dispatched:** batch 1 (Phase 1, T1–T7) worker - at HEAD: none (unborn branch `feature/foundation`) - 2026-11-25 - returned (T1–T7 committed, 6b387c5..7be4630, api 11 passed); batch 2 (Phases 2+3, T8–T14) worker - at HEAD 7be4630 - 2026-11-25 - returned (T8–T14 committed, ec18911..5ef2b29); Verifier - at HEAD 9b8d64a - 2026-11-25 (proofs re-run at 25c45ed) - returned FAIL, 11 findings; fix worker (F1–F10, F11 /apix part) - at HEAD 25c45ed - 2026-11-25
+**Settled mid-build:** 2026-11-25 - repository creation removed from T1; this plan does not create the repository (user: "in the phase 1, remove the github repo creation"); 2026-11-25 - the user creates the repository and each task is committed locally, never pushed (user: "1"); 2026-11-25 - after verification F11, add FND-24..26 (405/422/HTTPException envelope, 422 never echoes input) as T15 before Foundation closes (user: "Add it now (Recommended)")
+**Dispatched:** batch 1 (Phase 1, T1–T7) worker - at HEAD: none (unborn branch `feature/foundation`) - 2026-11-25 - returned (T1–T7 committed, 6b387c5..7be4630, api 11 passed); batch 2 (Phases 2+3, T8–T14) worker - at HEAD 7be4630 - 2026-11-25 - returned (T8–T14 committed, ec18911..5ef2b29); Verifier - at HEAD 9b8d64a - 2026-11-25 (proofs re-run at 25c45ed) - returned FAIL, 11 findings; fix worker (F1–F10, F11 /apix part) - at HEAD 25c45ed - 2026-11-25 - returned (f74f8d5..09899c4); T15 worker - at HEAD 09899c4 - 2026-11-25
 **Walked:** 2026-11-25 - `docker compose up -d --build --wait` from the dev `.env`; `curl localhost:8000/api/health` and `curl localhost:5173/api/health` both returned `{"status":"ok","database":"ok"}` (first curl right after `--wait` got a connection reset; api has no compose healthcheck, so `--wait` returns before uvicorn listens - not a spec criterion). Chrome at `http://localhost:5173/nope` showed "Page not found" with a "Back to home" link; clicking it opened `/` showing the "Toth Research" heading, "7 specialized agents" and a disabled "Start analysis" button. No sign-in or data needed.
 
 ---
@@ -448,7 +478,7 @@ Phase 1 → Phase 2 → Phase 3
 
 Phase 1:  T1 → T2 → T3 → T4 → T5 → T6 → T7
 Phase 2:  T8 → T9 → T10
-Phase 3:  T11 → T12 → T13 → T14
+Phase 3:  T11 → T12 → T13 → T14 → T15
 ```
 
-14 tasks pack into two batches: Phase 1 (7 tasks), then Phases 2 + 3 (7 tasks).
+15 tasks: Phase 1 (7 tasks), then Phases 2 + 3 (8 tasks). T15 was added after verification.

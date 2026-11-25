@@ -1,7 +1,9 @@
 import logging
 
 import pytest
+from fastapi import HTTPException
 from fastapi.testclient import TestClient
+from pydantic import TypeAdapter, ValidationError
 
 from app.main import create_app
 
@@ -16,7 +18,19 @@ def client() -> TestClient:
     async def boom() -> None:
         raise RuntimeError("secret /path detail")
 
+    async def needs_int(n: int) -> int:
+        return n
+
+    async def conflict() -> None:
+        raise HTTPException(409, "Already exists")
+
+    async def conflict_dict() -> None:
+        raise HTTPException(409, {"reason": "duplicate"})
+
     app.add_api_route("/api/test-only/raise", boom)
+    app.add_api_route("/api/test-only/int", needs_int)
+    app.add_api_route("/api/test-only/conflict", conflict)
+    app.add_api_route("/api/test-only/conflict-dict", conflict_dict)
     return TestClient(app, raise_server_exceptions=False)
 
 
@@ -57,3 +71,38 @@ def test_api_prefix_match_is_exact(client: TestClient) -> None:
 
     assert response.status_code == 404
     assert response.json() == {"detail": "Not Found"}
+
+
+def test_method_not_allowed_returns_405_envelope(client: TestClient) -> None:
+    response = client.post("/api/health")
+
+    assert response.status_code == 405
+    assert response.json() == {"error": "method_not_allowed", "message": "Method not allowed."}
+
+
+def test_validation_error_returns_422_without_input(client: TestClient) -> None:
+    with pytest.raises(ValidationError) as excinfo:
+        TypeAdapter(int).validate_python("secretvalue")
+    pydantic_msg = excinfo.value.errors()[0]["msg"]
+
+    response = client.get("/api/test-only/int?n=secretvalue")
+
+    assert response.status_code == 422
+    assert response.json() == {
+        "error": "validation_error",
+        "message": "Request validation failed.",
+        "fields": [{"field": "query.n", "issue": pydantic_msg}],
+    }
+    assert "secretvalue" not in response.text
+
+
+def test_http_exception_returns_envelope_with_detail(client: TestClient) -> None:
+    response = client.get("/api/test-only/conflict")
+
+    assert response.status_code == 409
+    assert response.json() == {"error": "conflict", "message": "Already exists"}
+
+    response = client.get("/api/test-only/conflict-dict")
+
+    assert response.status_code == 409
+    assert response.json() == {"error": "conflict", "message": "Conflict"}
