@@ -39,3 +39,10 @@ def test_api_entrypoint_migrates_before_uvicorn() -> None:
     assert "uvicorn" in command
     assert command.index("alembic upgrade head") < command.index("uvicorn")
     assert "&&" in command[command.index("alembic upgrade head") : command.index("uvicorn")]
+
+
+def test_default_host_ports_match_the_spec() -> None:
+    services = load_services()
+
+    assert "${API_PORT:-8000}:8000" in services["api"]["ports"]
+    assert "${WEB_PORT:-5173}:5173" in services["web"]["ports"]
