@@ -436,7 +436,7 @@ Proof: run api | test_db_guard.py::test_guard_rejects_equal_urls PASSED
 ## Handoff
 
 **Settled mid-build:** 2026-11-25 - repository creation removed from T1; this plan does not create the repository (user: "in the phase 1, remove the github repo creation"); 2026-11-25 - the user creates the repository and each task is committed locally, never pushed (user: "1")
-**Dispatched:** batch 1 (Phase 1, T1–T7) worker - at HEAD: none (unborn branch `feature/foundation`) - 2026-11-25 - returned (T1–T7 committed, 6b387c5..7be4630, api 11 passed); batch 2 (Phases 2+3, T8–T14) worker - at HEAD 7be4630 - 2026-11-25 - returned (T8–T14 committed, ec18911..5ef2b29); Verifier - at HEAD <set below> - 2026-11-25
+**Dispatched:** batch 1 (Phase 1, T1–T7) worker - at HEAD: none (unborn branch `feature/foundation`) - 2026-11-25 - returned (T1–T7 committed, 6b387c5..7be4630, api 11 passed); batch 2 (Phases 2+3, T8–T14) worker - at HEAD 7be4630 - 2026-11-25 - returned (T8–T14 committed, ec18911..5ef2b29); Verifier - at HEAD 9b8d64a - 2026-11-25
 **Walked:** 2026-11-25 - `docker compose up -d --build --wait` from the dev `.env`; `curl localhost:8000/api/health` and `curl localhost:5173/api/health` both returned `{"status":"ok","database":"ok"}` (first curl right after `--wait` got a connection reset; api has no compose healthcheck, so `--wait` returns before uvicorn listens - not a spec criterion). Chrome at `http://localhost:5173/nope` showed "Page not found" with a "Back to home" link; clicking it opened `/` showing the "Toth Research" heading, "7 specialized agents" and a disabled "Start analysis" button. No sign-in or data needed.
 
 ---
