@@ -9,6 +9,6 @@
     "build": "pnpm -r --if-present build",
     "typecheck": "pnpm -r --if-present typecheck && cd api && .venv/bin/mypy app",
     "lint": "pnpm -r --if-present lint && cd api && .venv/bin/ruff check app tests",
-    "test": "pnpm -r --if-present test && docker compose up -d --wait db && cd api && .venv/bin/pytest"
+    "test": "bash scripts/test-all.sh"
   }
 }

@@ -25,7 +25,8 @@ grep -Eq '^apps/web test: +Tests +[0-9]+ passed' "$OUT" || fail "web Vitest summ
 grep -Eq '^=+ [0-9]+ passed.* in [0-9.]+s' "$OUT" || fail "api pytest summary missing"
 echo "ok - pnpm test runs api, web and shared suites"
 
-# $1 suite label, $2 article, $3 file to create, $4 contents
+# $1 suite label, $2 article, $3 file to create, $4 contents,
+# $5 optional pattern another suite prints, proving it still ran
 expect_failure() {
   printf '%s\n' "$4" >"$3"
   if pnpm test >"$OUT" 2>&1; then
@@ -34,12 +35,15 @@ expect_failure() {
   fi
   rm -f "$3"
   grep -q "$(basename "$3")" "$OUT" || fail "the failing $1 test did not run"
+  if [[ -n "${5:-}" ]]; then
+    grep -Eq "$5" "$OUT" || fail "a failing $1 test stopped another suite from running"
+  fi
   echo "ok - pnpm test exits non-zero when $2 $1 test fails"
 }
 
 expect_failure api an "$API_FAIL" 'def test_deliberate_failure() -> None:
     assert False'
 expect_failure web a "$WEB_FAIL" 'import { expect, it } from "vitest";
-it("deliberate failure", () => { expect(1).toBe(2); });'
+it("deliberate failure", () => { expect(1).toBe(2); });' '^=+ [0-9]+ passed.* in [0-9.]+s'
 expect_failure shared a "$SHARED_FAIL" 'import { expect, it } from "vitest";
 it("deliberate failure", () => { expect(1).toBe(2); });'
