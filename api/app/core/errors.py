@@ -19,7 +19,8 @@ async def _unhandled_exception(request: Request, exc: Exception) -> JSONResponse
 
 async def _http_exception(request: Request, exc: Exception) -> Response:
     exc = cast(StarletteHTTPException, exc)
-    if exc.status_code == 404 and request.url.path.startswith("/api"):
+    path = request.url.path
+    if exc.status_code == 404 and (path == "/api" or path.startswith("/api/")):
         return JSONResponse(
             status_code=404,
             content={"error": "not_found", "message": "Resource not found."},

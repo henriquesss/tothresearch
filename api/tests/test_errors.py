@@ -48,3 +48,12 @@ def test_unknown_api_path_returns_404_envelope(client: TestClient) -> None:
 
     assert response.status_code == 404
     assert response.json() == NOT_FOUND_404
+
+
+def test_api_prefix_match_is_exact(client: TestClient) -> None:
+    assert client.get("/api").json() == NOT_FOUND_404
+
+    response = client.get("/apix")
+
+    assert response.status_code == 404
+    assert response.json() == {"detail": "Not Found"}
