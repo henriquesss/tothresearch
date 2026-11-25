@@ -148,10 +148,10 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_errors.py` mounts a test-only route that raises `RuntimeError("secret /path detail")`: response is 500 with the exact body, and the body contains neither `RuntimeError`, `secret`, `/path` nor `Traceback`
-- [ ] `test_errors.py`: the same request logs an ERROR record whose text contains `Traceback` (caplog)
-- [ ] `test_errors.py`: `GET /api/does-not-exist` returns 404 with the exact body
-- [ ] Gate passes; test count: 6
+- [x] `test_errors.py` mounts a test-only route that raises `RuntimeError("secret /path detail")`: response is 500 with the exact body, and the body contains neither `RuntimeError`, `secret`, `/path` nor `Traceback`
+- [x] `test_errors.py`: the same request logs an ERROR record whose text contains `Traceback` (caplog)
+- [x] `test_errors.py`: `GET /api/does-not-exist` returns 404 with the exact body
+- [x] Gate passes; test count: 6
 
 **Tests**: unit
 **Gate**: quick
