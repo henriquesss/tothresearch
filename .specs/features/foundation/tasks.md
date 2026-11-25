@@ -331,9 +331,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] Prints `ok - pnpm test runs api, web and shared suites`
-- [ ] Prints `ok - pnpm test exits non-zero when an api test fails`, `... a web test fails`, `... a shared test fails`
-- [ ] Leaves `git status` clean
+- [x] Prints `ok - pnpm test runs api, web and shared suites`
+- [x] Prints `ok - pnpm test exits non-zero when an api test fails`, `... a web test fails`, `... a shared test fails`
+- [x] Leaves `git status` clean
 
 **Tests**: smoke
 **Gate**: full
