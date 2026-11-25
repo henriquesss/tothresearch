@@ -46,3 +46,12 @@ def test_default_host_ports_match_the_spec() -> None:
 
     assert "${API_PORT:-8000}:8000" in services["api"]["ports"]
     assert "${WEB_PORT:-5173}:5173" in services["web"]["ports"]
+
+
+def test_web_waits_for_healthy_api() -> None:
+    services = load_services()
+
+    check = " ".join(services["api"]["healthcheck"]["test"])
+    assert "urllib" in check
+    assert "/api/health" in check
+    assert services["web"]["depends_on"]["api"]["condition"] == "service_healthy"

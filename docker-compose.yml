@@ -29,6 +29,16 @@ services:
     depends_on:
       db:
         condition: service_healthy
+    healthcheck:
+      # urlopen raises on any non-2xx status, so a degraded 503 counts as unhealthy.
+      test:
+        - CMD
+        - python
+        - -c
+        - "import urllib.request; urllib.request.urlopen('http://localhost:8000/api/health', timeout=5)"
+      interval: 2s
+      timeout: 6s
+      retries: 30
 
   web:
     build:
@@ -39,7 +49,8 @@ services:
     ports:
       - "${WEB_PORT:-5173}:5173"
     depends_on:
-      - api
+      api:
+        condition: service_healthy
 
 volumes:
   db-data:
