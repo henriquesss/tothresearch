@@ -4,7 +4,7 @@ Source: `PRD.md` v0.2. Each feature gets its own `features/<name>/spec.md` when 
 
 | # | Feature | Delivers (PRD refs) | Depends on | Status |
 |---|---------|---------------------|------------|--------|
-| 1 | `foundation` | pnpm monorepo, docker-compose (Postgres, API, web), FastAPI app + config + health + safe error responses, Alembic, Vite/React/Tailwind/shadcn/Router/Query shell, `packages/shared`, one `pnpm test` (§5.1–5.5, §12 phase 1) | — | Spec drafted |
+| 1 | `foundation` | pnpm monorepo, docker-compose (Postgres, API, web), FastAPI app + config + health + safe error responses, Alembic, Vite/React/Tailwind/shadcn/Router/Query shell, `packages/shared`, one `pnpm test` (§5.1–5.5, §12 phase 1) | — | Done (2026-11-25) |
 | 2 | `auth-invitations` | User/Invitation tables, admin-key invitation endpoint, redeem-invitation registration, login/logout/me, session cookie, protected routes, login + register screens (§3.2, §7 auth, §9) | 1 | Not started |
 | 3 | `company-lookup` | Provider interfaces, yfinance + GDELT adapters, ticker validation/market detection, `GET /api/companies/search`, Company table, data collection + normalization service (§3.4 steps 1–3, §5.6) | 1, 2 | Not started |
 | 4 | `agents` | OpenRouter LLM service (per-agent model config, token tracking, timeouts), seven agents with system prompts and typed Pydantic outputs, structured-output validation (§4.1, §4.4, §5.4) | 3 | Not started |

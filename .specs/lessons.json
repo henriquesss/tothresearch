@@ -1,0 +1,81 @@
+{
+  "schema": 1,
+  "promote_threshold": 2,
+  "window_days": 45,
+  "quarantine_threshold": 2,
+  "next_id": 5,
+  "lessons": [
+    {
+      "id": "L-001",
+      "key": "weak_test::a timeout criterion needs a test against a peer that never replies not a refused connection",
+      "text": "A timeout criterion needs a test against a peer that never replies, not a refused connection.",
+      "signal": "weak_test",
+      "scope": "api-tests",
+      "status": "candidate",
+      "features": [
+        "foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C7 / verification F1 (api-tests)"
+      ],
+      "created": "2026-11-25T20:28:08Z",
+      "last_seen": "2026-11-25T20:28:08Z"
+    },
+    {
+      "id": "L-002",
+      "key": "ac_gap::a no echo error criterion must cover custom validator messages and submitted key names not only the input field",
+      "text": "A no-echo error criterion must cover custom validator messages and submitted key names, not only the input field.",
+      "signal": "ac_gap",
+      "scope": "api-errors",
+      "status": "candidate",
+      "features": [
+        "foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "FND-25 / verification F12 (api-errors)"
+      ],
+      "created": "2026-11-25T20:28:08Z",
+      "last_seen": "2026-11-25T20:28:08Z"
+    },
+    {
+      "id": "L-003",
+      "key": "weak_test::when a criterion says the suite aborts test the session hook in a subprocess not the helper it calls",
+      "text": "When a criterion says the suite aborts, test the session hook in a subprocess, not the helper it calls.",
+      "signal": "weak_test",
+      "scope": "api-tests",
+      "status": "candidate",
+      "features": [
+        "foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "C23 / verification F3 (api-tests)"
+      ],
+      "created": "2026-11-25T20:28:08Z",
+      "last_seen": "2026-11-25T20:28:08Z"
+    },
+    {
+      "id": "L-004",
+      "key": "ac_gap::compare database identity after parsing host port and name never raw url strings",
+      "text": "Compare database identity after parsing host, port and name, never raw URL strings.",
+      "signal": "ac_gap",
+      "scope": "api-tests",
+      "status": "candidate",
+      "features": [
+        "foundation"
+      ],
+      "recurrence": 1,
+      "harmful": 0,
+      "evidence": [
+        "FND-21 / verification F2 (api-tests)"
+      ],
+      "created": "2026-11-25T20:28:09Z",
+      "last_seen": "2026-11-25T20:28:09Z"
+    }
+  ]
+}
