@@ -267,12 +267,12 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `App.test.tsx`: `/` shows a heading "Toth Research"
-- [ ] `App.test.tsx`: `/nope` shows "Page not found"
-- [ ] `App.test.tsx`: clicking the not-found link shows the "Toth Research" heading
-- [ ] `App.test.tsx`: `/` renders an element produced by the shadcn `Button` and the text "7 specialized agents" derived from `AGENT_TYPES.length`
-- [ ] `stack.test.ts`: `apps/web/package.json` depends on react, react-router, @tanstack/react-query, tailwindcss and `@toth/shared` (`workspace:*`)
-- [ ] Build gate green (`pnpm build; pnpm typecheck; pnpm lint`); test count: web 7
+- [x] `App.test.tsx`: `/` shows a heading "Toth Research"
+- [x] `App.test.tsx`: `/nope` shows "Page not found"
+- [x] `App.test.tsx`: clicking the not-found link shows the "Toth Research" heading
+- [x] `App.test.tsx`: `/` renders an element produced by the shadcn `Button` and the text "7 specialized agents" derived from `AGENT_TYPES.length`
+- [x] `stack.test.ts`: `apps/web/package.json` depends on react, react-router, @tanstack/react-query, tailwindcss and `@toth/shared` (`workspace:*`)
+- [x] Build gate green (`pnpm build; pnpm typecheck; pnpm lint`); test count: web 7
 
 **Tests**: unit
 **Gate**: build

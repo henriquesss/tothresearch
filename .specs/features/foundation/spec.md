@@ -158,10 +158,10 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-11 | P1: Configuration — AC1 missing DATABASE_URL | Tasks | Implementing |
 | FND-12 | P1: Configuration — AC2 .env.example complete | Tasks | Implementing |
 | FND-13 | P1: Configuration — AC3 no secrets exposed to browser | Tasks | Implementing |
-| FND-14 | P1: Web shell — AC1 home heading | Tasks | Pending |
-| FND-15 | P1: Web shell — AC2 not found page | Tasks | Pending |
-| FND-16 | P1: Web shell — AC3 link back home | Tasks | Pending |
-| FND-17 | P1: Web shell — AC4 frontend stack | Tasks | Pending |
+| FND-14 | P1: Web shell — AC1 home heading | Tasks | Implementing |
+| FND-15 | P1: Web shell — AC2 not found page | Tasks | Implementing |
+| FND-16 | P1: Web shell — AC3 link back home | Tasks | Implementing |
+| FND-17 | P1: Web shell — AC4 frontend stack | Tasks | Implementing |
 | FND-18 | P1: Web shell — AC5 AGENT_TYPES | Tasks | Implementing |
 | FND-19 | P1: One test command — AC1 runs all suites | Tasks | Implementing |
 | FND-20 | P1: One test command — AC2 non-zero on failure | Tasks | Pending |
