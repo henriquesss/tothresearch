@@ -169,9 +169,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_db_guard.py`: the guard raises with a message containing `TEST_DATABASE_URL` and `DATABASE_URL` when the URLs are equal
-- [ ] `test_db_guard.py`: the fixture engine's database name is the one in `TEST_DATABASE_URL` and differs from `DATABASE_URL`'s
-- [ ] Gate passes; test count: 8
+- [x] `test_db_guard.py`: the guard raises with a message containing `TEST_DATABASE_URL` and `DATABASE_URL` when the URLs are equal
+- [x] `test_db_guard.py`: the fixture engine's database name is the one in `TEST_DATABASE_URL` and differs from `DATABASE_URL`'s
+- [x] Gate passes; test count: 8
 
 **Tests**: unit
 **Gate**: full

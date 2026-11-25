@@ -165,9 +165,9 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-18 | P1: Web shell — AC5 AGENT_TYPES | Tasks | Pending |
 | FND-19 | P1: One test command — AC1 runs all suites | Tasks | Implementing |
 | FND-20 | P1: One test command — AC2 non-zero on failure | Tasks | Pending |
-| FND-21 | P1: One test command — AC3 separate test DB | Tasks | Pending |
+| FND-21 | P1: One test command — AC3 separate test DB | Tasks | Implementing |
 | FND-22 | Edge: api waits for db health | Tasks | Pending |
-| FND-23 | Edge: test DB guard | Tasks | Pending |
+| FND-23 | Edge: test DB guard | Tasks | Implementing |
 
 **Coverage:** 23 total, 0 mapped to tasks, 23 unmapped ⚠️ (mapped in `tasks.md` after approval)
 
