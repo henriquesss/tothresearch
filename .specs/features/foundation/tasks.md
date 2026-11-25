@@ -351,8 +351,8 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_repo_layout.py::test_prd_layout_exists` passes
-- [ ] Build gate, `pnpm test`, `bash scripts/smoke.sh` and `bash scripts/check-test-command.sh` all green
+- [x] `test_repo_layout.py::test_prd_layout_exists` passes
+- [x] Build gate, `pnpm test`, `bash scripts/smoke.sh` and `bash scripts/check-test-command.sh` all green
 
 **Tests**: unit
 **Gate**: build
