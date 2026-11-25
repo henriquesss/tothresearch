@@ -108,9 +108,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `api/.venv` installs both requirement files
-- [ ] `tests/test_app.py::test_create_app_returns_fastapi_app` passes
-- [ ] `ruff check` and `mypy app` exit 0
+- [x] `api/.venv` installs both requirement files
+- [x] `tests/test_app.py::test_create_app_returns_fastapi_app` passes
+- [x] `ruff check` and `mypy app` exit 0
 
 **Tests**: unit
 **Gate**: quick
