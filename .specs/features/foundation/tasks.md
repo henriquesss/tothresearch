@@ -290,9 +290,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_compose.py`: `api.depends_on.db.condition` is `service_healthy` and `db` defines a healthcheck
-- [ ] `test_compose.py`: the `api` entrypoint runs `alembic upgrade head` before `uvicorn`
-- [ ] `docker compose build` exits 0; full gate passes
+- [x] `test_compose.py`: `api.depends_on.db.condition` is `service_healthy` and `db` defines a healthcheck
+- [x] `test_compose.py`: the `api` entrypoint runs `alembic upgrade head` before `uvicorn`
+- [x] `docker compose build` exits 0; full gate passes
 
 **Tests**: unit
 **Gate**: full

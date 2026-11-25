@@ -6,7 +6,7 @@ services:
       POSTGRES_PASSWORD: toth
       POSTGRES_DB: toth
     ports:
-      - "5432:5432"
+      - "${DB_PORT:-5432}:5432"
     volumes:
       - db-data:/var/lib/postgresql/data
       - ./docker/db/create-test-db.sql:/docker-entrypoint-initdb.d/create-test-db.sql:ro
@@ -15,6 +15,31 @@ services:
       interval: 2s
       timeout: 5s
       retries: 30
+
+  api:
+    build: ./api
+    env_file:
+      - path: ${TOTH_ENV_FILE:-.env}
+        required: false
+    environment:
+      # .env points at localhost for host-side tools; inside compose the database is `db`.
+      DATABASE_URL: postgresql+asyncpg://toth:toth@db:5432/toth
+    ports:
+      - "${API_PORT:-8000}:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  web:
+    build:
+      context: .
+      dockerfile: apps/web/Dockerfile
+    environment:
+      API_PROXY_TARGET: http://api:8000
+    ports:
+      - "${WEB_PORT:-5173}:5173"
+    depends_on:
+      - api
 
 volumes:
   db-data:

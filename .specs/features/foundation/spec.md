@@ -146,7 +146,7 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
 | FND-01 | P1: Run the whole stack locally — AC1 compose up + health | Tasks | Pending |
-| FND-02 | P1: Run the whole stack locally — AC2 migrations on start | Tasks | Pending |
+| FND-02 | P1: Run the whole stack locally — AC2 migrations on start | Tasks | Implementing |
 | FND-03 | P1: Run the whole stack locally — AC3 upgrade/downgrade | Tasks | Implementing |
 | FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Implementing |
 | FND-05 | P1: Run the whole stack locally — AC5 repo layout | Tasks | Implementing |
@@ -166,7 +166,7 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-19 | P1: One test command — AC1 runs all suites | Tasks | Implementing |
 | FND-20 | P1: One test command — AC2 non-zero on failure | Tasks | Pending |
 | FND-21 | P1: One test command — AC3 separate test DB | Tasks | Implementing |
-| FND-22 | Edge: api waits for db health | Tasks | Pending |
+| FND-22 | Edge: api waits for db health | Tasks | Implementing |
 | FND-23 | Edge: test DB guard | Tasks | Implementing |
 
 **Coverage:** 23 total, 0 mapped to tasks, 23 unmapped ⚠️ (mapped in `tasks.md` after approval)

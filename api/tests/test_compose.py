@@ -1,0 +1,41 @@
+import re
+from pathlib import Path
+from typing import Any
+
+import yaml
+
+ROOT_DIR = Path(__file__).resolve().parents[2]
+COMPOSE_FILE = ROOT_DIR / "docker-compose.yml"
+API_DOCKERFILE = ROOT_DIR / "api" / "Dockerfile"
+
+
+def load_services() -> dict[str, Any]:
+    compose = yaml.safe_load(COMPOSE_FILE.read_text())
+    services: dict[str, Any] = compose["services"]
+    return services
+
+
+def test_api_waits_for_healthy_db() -> None:
+    services = load_services()
+
+    assert services["api"]["depends_on"]["db"]["condition"] == "service_healthy"
+    assert services["db"]["healthcheck"]["test"]
+
+
+def test_api_entrypoint_migrates_before_uvicorn() -> None:
+    api = load_services()["api"]
+    # The image's own start command must not be replaced by compose.
+    assert "command" not in api
+    assert "entrypoint" not in api
+
+    start = [
+        line
+        for line in API_DOCKERFILE.read_text().splitlines()
+        if re.match(r"^\s*(CMD|ENTRYPOINT)\b", line)
+    ]
+    assert len(start) == 1
+    command = start[0]
+    assert "alembic upgrade head" in command
+    assert "uvicorn" in command
+    assert command.index("alembic upgrade head") < command.index("uvicorn")
+    assert "&&" in command[command.index("alembic upgrade head") : command.index("uvicorn")]
