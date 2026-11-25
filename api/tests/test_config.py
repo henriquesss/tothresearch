@@ -26,6 +26,22 @@ def test_missing_database_url_exits_naming_it() -> None:
     assert "DATABASE_URL" in result.stderr
 
 
+def test_empty_database_url_exits_naming_it() -> None:
+    env = {**os.environ, "DATABASE_URL": ""}
+
+    result = subprocess.run(
+        [sys.executable, "-m", "uvicorn", "app.main:app", "--port", "0"],
+        cwd=API_DIR,
+        env=env,
+        capture_output=True,
+        text=True,
+        timeout=30,
+    )
+
+    assert result.returncode != 0
+    assert "DATABASE_URL" in result.stderr
+
+
 def test_env_example_matches_settings() -> None:
     lines = ENV_EXAMPLE.read_text().splitlines()
     variables: dict[str, int] = {}

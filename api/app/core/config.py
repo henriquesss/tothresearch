@@ -1,9 +1,9 @@
-from pydantic import SecretStr, ValidationError
+from pydantic import Field, SecretStr, ValidationError
 from pydantic_settings import BaseSettings
 
 
 class Settings(BaseSettings):
-    database_url: str
+    database_url: str = Field(min_length=1)
     test_database_url: str | None = None
     openrouter_api_key: SecretStr | None = None
     admin_api_key: SecretStr | None = None
@@ -12,15 +12,17 @@ class Settings(BaseSettings):
 
 
 def load_settings() -> Settings:
-    """Read settings from the environment; exit naming any missing required variable."""
+    """Read settings from the environment; exit naming any missing or empty required variable."""
     try:
         return Settings()
     except ValidationError as exc:
         missing = sorted(
-            str(error["loc"][0]).upper() for error in exc.errors() if error["type"] == "missing"
+            str(error["loc"][0]).upper()
+            for error in exc.errors()
+            if error["type"] in ("missing", "string_too_short")
         )
         if missing:
             raise SystemExit(
-                f"Missing required environment variable(s): {', '.join(missing)}"
+                f"Missing or empty required environment variable(s): {', '.join(missing)}"
             ) from None
         raise
