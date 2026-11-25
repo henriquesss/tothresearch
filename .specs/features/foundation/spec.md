@@ -161,32 +161,32 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 
 | Requirement ID | Story | Phase | Status |
 | -------------- | ----- | ----- | ------ |
-| FND-01 | P1: Run the whole stack locally — AC1 compose up + health | Tasks | Implementing |
-| FND-02 | P1: Run the whole stack locally — AC2 migrations on start | Tasks | Implementing |
-| FND-03 | P1: Run the whole stack locally — AC3 upgrade/downgrade | Tasks | Implementing |
-| FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Implementing |
-| FND-05 | P1: Run the whole stack locally — AC5 repo layout | Tasks | Implementing |
-| FND-06 | P1: Health and safe errors — AC1 healthy | Tasks | Implementing |
-| FND-07 | P1: Health and safe errors — AC2 DB unavailable 503 | Tasks | Implementing |
-| FND-08 | P1: Health and safe errors — AC3 generic 500 body | Tasks | Implementing |
-| FND-09 | P1: Health and safe errors — AC4 traceback logged | Tasks | Implementing |
-| FND-10 | P1: Health and safe errors — AC5 404 envelope | Tasks | Implementing |
-| FND-11 | P1: Configuration — AC1 missing DATABASE_URL | Tasks | Implementing |
-| FND-12 | P1: Configuration — AC2 .env.example complete | Tasks | Implementing |
-| FND-13 | P1: Configuration — AC3 no secrets exposed to browser | Tasks | Implementing |
-| FND-14 | P1: Web shell — AC1 home heading | Tasks | Implementing |
-| FND-15 | P1: Web shell — AC2 not found page | Tasks | Implementing |
-| FND-16 | P1: Web shell — AC3 link back home | Tasks | Implementing |
-| FND-17 | P1: Web shell — AC4 frontend stack | Tasks | Implementing |
-| FND-18 | P1: Web shell — AC5 AGENT_TYPES | Tasks | Implementing |
-| FND-19 | P1: One test command — AC1 runs all suites | Tasks | Implementing |
-| FND-20 | P1: One test command — AC2 non-zero on failure | Tasks | Implementing |
-| FND-21 | P1: One test command — AC3 separate test DB | Tasks | Implementing |
-| FND-22 | Edge: api waits for db health | Tasks | Implementing |
-| FND-23 | Edge: test DB guard | Tasks | Implementing |
-| FND-24 | P1: Error envelope — AC1 405 | Tasks | Implementing |
-| FND-25 | P1: Error envelope — AC2 422 without input values | Tasks | Implementing |
-| FND-26 | P1: Error envelope — AC3 HTTPException | Tasks | Implementing |
+| FND-01 | P1: Run the whole stack locally — AC1 compose up + health | Tasks | Verified |
+| FND-02 | P1: Run the whole stack locally — AC2 migrations on start | Tasks | Verified |
+| FND-03 | P1: Run the whole stack locally — AC3 upgrade/downgrade | Tasks | Verified |
+| FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Verified |
+| FND-05 | P1: Run the whole stack locally — AC5 repo layout | Tasks | Verified |
+| FND-06 | P1: Health and safe errors — AC1 healthy | Tasks | Verified |
+| FND-07 | P1: Health and safe errors — AC2 DB unavailable 503 | Tasks | Verified |
+| FND-08 | P1: Health and safe errors — AC3 generic 500 body | Tasks | Verified |
+| FND-09 | P1: Health and safe errors — AC4 traceback logged | Tasks | Verified |
+| FND-10 | P1: Health and safe errors — AC5 404 envelope | Tasks | Verified |
+| FND-11 | P1: Configuration — AC1 missing DATABASE_URL | Tasks | Verified |
+| FND-12 | P1: Configuration — AC2 .env.example complete | Tasks | Verified |
+| FND-13 | P1: Configuration — AC3 no secrets exposed to browser | Tasks | Verified |
+| FND-14 | P1: Web shell — AC1 home heading | Tasks | Verified |
+| FND-15 | P1: Web shell — AC2 not found page | Tasks | Verified |
+| FND-16 | P1: Web shell — AC3 link back home | Tasks | Verified |
+| FND-17 | P1: Web shell — AC4 frontend stack | Tasks | Verified |
+| FND-18 | P1: Web shell — AC5 AGENT_TYPES | Tasks | Verified |
+| FND-19 | P1: One test command — AC1 runs all suites | Tasks | Verified |
+| FND-20 | P1: One test command — AC2 non-zero on failure | Tasks | Verified |
+| FND-21 | P1: One test command — AC3 separate test DB | Tasks | Verified |
+| FND-22 | Edge: api waits for db health | Tasks | Verified |
+| FND-23 | Edge: test DB guard | Tasks | Verified |
+| FND-24 | P1: Error envelope — AC1 405 | Tasks | Verified |
+| FND-25 | P1: Error envelope — AC2 422 without input values | Tasks | Verified |
+| FND-26 | P1: Error envelope — AC3 HTTPException | Tasks | Verified |
 
 **Coverage:** 26 total, 26 mapped to tasks (T1–T15), 0 unmapped
 

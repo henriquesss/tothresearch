@@ -1,7 +1,7 @@
 # foundation proofs
 
-**HEAD**: 5ef2b29
-**Tree**: dirty - .claude/
+**HEAD**: 25c45ed
+**Tree**: clean
 **Shell**: /bin/sh
 **Result**: 26 pass, 0 fail
 
@@ -58,7 +58,7 @@ tests/test_repo_layout.py::test_prd_layout_exists PASSED                 [100%]
     from starlette.testclient import TestClient as TestClient  # noqa
 
 -- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
-======================== 14 passed, 1 warning in 2.07s =========================
+======================== 14 passed, 1 warning in 2.09s =========================
  Container toth_research-db-1  Running
  Container toth_research-db-1  Waiting
  Container toth_research-db-1  Healthy
@@ -70,17 +70,17 @@ tests/test_repo_layout.py::test_prd_layout_exists PASSED                 [100%]
 RUN  v5.1.2 /Users/lucashenriques/Projects/fun/toth_research/apps/web
 
  ✓ src/stack.test.ts > depends on the PRD frontend stack and the shared workspace package 1ms
- ✓ src/env.test.ts > exposes only VITE_ variables and no secrets 3ms
+ ✓ src/env.test.ts > exposes only VITE_ variables and no secrets 2ms
  ✓ src/env.test.ts > proxies /api to the configured target 0ms
- ✓ src/App.test.tsx > renders the Toth Research heading on / 40ms
- ✓ src/App.test.tsx > renders Page not found on an unknown path 5ms
- ✓ src/App.test.tsx > not-found link navigates home 15ms
+ ✓ src/App.test.tsx > renders the Toth Research heading on / 41ms
+ ✓ src/App.test.tsx > renders Page not found on an unknown path 4ms
+ ✓ src/App.test.tsx > not-found link navigates home 18ms
  ✓ src/App.test.tsx > renders a shadcn button on / 2ms
 
  Test Files  3 passed (3)
       Tests  7 passed (7)
-   Start at  17:06:23
-   Duration  817ms (environment 39%, setup 37%, import 15%, tests 6%, transform 2%, worker 1%)
+   Start at  17:07:45
+   Duration  837ms (environment 39%, setup 37%, import 15%, tests 5%, transform 3%, worker 1%)
 ```
 
 `Run shared` - exit 0
@@ -92,8 +92,8 @@ RUN  v5.1.2 /Users/lucashenriques/Projects/fun/toth_research/packages/shared
 
  Test Files  1 passed (1)
       Tests  1 passed (1)
-   Start at  17:06:25
-   Duration  78ms (import 45%, transform 26%, worker 15%, tests 13%, environment 1%)
+   Start at  17:07:46
+   Duration  90ms (import 45%, transform 27%, worker 16%, tests 12%, environment 1%)
 ```
 
 `Run testcmd` - exit 0
