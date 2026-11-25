@@ -150,8 +150,8 @@ Toth Research has a PRD and no code. Every later feature (auth, data, agents, or
 | FND-03 | P1: Run the whole stack locally — AC3 upgrade/downgrade | Tasks | Pending |
 | FND-04 | P1: Run the whole stack locally — AC4 Vite proxy | Tasks | Pending |
 | FND-05 | P1: Run the whole stack locally — AC5 repo layout | Tasks | Implementing |
-| FND-06 | P1: Health and safe errors — AC1 healthy | Tasks | Pending |
-| FND-07 | P1: Health and safe errors — AC2 DB unavailable 503 | Tasks | Pending |
+| FND-06 | P1: Health and safe errors — AC1 healthy | Tasks | Implementing |
+| FND-07 | P1: Health and safe errors — AC2 DB unavailable 503 | Tasks | Implementing |
 | FND-08 | P1: Health and safe errors — AC3 generic 500 body | Tasks | Implementing |
 | FND-09 | P1: Health and safe errors — AC4 traceback logged | Tasks | Implementing |
 | FND-10 | P1: Health and safe errors — AC5 404 envelope | Tasks | Implementing |

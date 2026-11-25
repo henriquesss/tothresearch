@@ -189,9 +189,9 @@ T11 → T12 → T13 → T14
 
 **Done when**:
 
-- [ ] `test_health.py`: with the test DB, the response is 200 with the exact body
-- [ ] `test_health.py`: with the engine pointed at an unreachable port, the response is 503 with the exact body within 3 seconds
-- [ ] Gate passes; test count: 10
+- [x] `test_health.py`: with the test DB, the response is 200 with the exact body
+- [x] `test_health.py`: with the engine pointed at an unreachable port, the response is 503 with the exact body within 3 seconds
+- [x] Gate passes; test count: 10
 
 **Tests**: integration
 **Gate**: full
