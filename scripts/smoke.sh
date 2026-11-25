@@ -25,9 +25,10 @@ fail() {
 trap teardown EXIT
 
 teardown
-compose build -q >/dev/null
 
+# The 90 s budget covers building the images as well as starting the stack.
 start=$(date +%s)
+compose build -q >/dev/null || fail "compose build"
 compose up -d >/dev/null 2>&1 || fail "compose up"
 status=""
 while (($(date +%s) - start < 90)); do
